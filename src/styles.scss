@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import "scss/index";
+
+body {
+  background-color: var(--primary);
+}
+
+.dias-error {
+  color: var(--error);
+}
+
+.dias-warning {
+  color: var(--warning);
+}
+
+.dias-success {
+  color: var(--success);
+}

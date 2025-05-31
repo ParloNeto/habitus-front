@@ -1,0 +1,30 @@
+$width-background: 1200px;
+
+.career {
+  width: $width-background;
+  height: 600px;
+  background-color: var(--primary-01);
+  border-radius: 15px;
+  display: flex;
+  position: relative;
+  &__seasons {
+  }
+  &__content {
+    margin: 30px 30px 15px 45px;
+    position: relative;
+    width: 100%;
+
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 80%;
+    }
+
+    &__btns_bottom {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+    }
+  }
+}

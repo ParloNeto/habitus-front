@@ -1,0 +1,29 @@
+<header>
+  <div class="dropdown"
+       (mouseenter)="isHoveredLeft = true"
+       (mouseleave)="isHoveredLeft = false">
+    <button class="dropbtn">
+      <img [src]="isHoveredLeft ? 'chevron-up.svg' : 'chevron-down.svg'" class="icon-chevron" [class.rotate]="isHoveredLeft" alt="Chevron icon" />
+    </button>
+    <div class="dropdown-content" [class.dropdown-enter]="isHoveredLeft">
+      <a routerLink="/cadastrar-habito">Cadastrar Tarefa</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+
+  <img routerLink="" ngSrc="/small-logo-habitus.png" width="169" height="70" priority />
+
+  <div class="dropdown"
+       (mouseenter)="isHoveredRight = true"
+       (mouseleave)="isHoveredRight = false">
+    <button class="dropbtn">
+      <img [src]="isHoveredRight ? 'chevron-up.svg' : 'chevron-down.svg'" class="icon-chevron" [class.rotate]="isHoveredRight" alt="Chevron icon" />
+    </button>
+    <div class="dropdown-content" [class.dropdown-enter]="isHoveredRight">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+</header>

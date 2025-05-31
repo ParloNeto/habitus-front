@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="container__content">
+    <h2 class="title-content">Seus Hábitos</h2>
+    @if (this.habitos(); as habitos) {
+      @for (habito of habitos; track $index) {
+    <div
+      class="container__content__habito-descricao"
+      [routerLink]="['/habito', habito.id]"
+    >
+      <h3 class="habito">{{ habito.nome }}</h3>
+      <h4>
+        Contador:
+        <span [ngClass]="getDiasClass(habito)">
+          {{ habito.dias }} {{ habito.dias === 1 ? "dia" : "dias" }}
+        </span>
+      </h4>
+    </div>
+    } }
+  </div>
+</div>
