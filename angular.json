@@ -5,6 +5,9 @@
   "projects": {
     "habitus-front": {
       "projectType": "application",
+       "i18n": {
+        "sourceLocale": "pt-BR"
+      },
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"

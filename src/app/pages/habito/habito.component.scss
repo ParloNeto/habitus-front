@@ -1,0 +1,68 @@
+:host {
+  h4 {
+    color: var(--primary);
+  }
+
+  p {
+    font-size: var(--font-p);
+    color: var(--secundary-light);
+    font-style: italic;
+  }
+
+  h2.mensagem-motivacao {
+    color: var(--secundary);
+    font-weight: bold;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .container__habito {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    &__header {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    &__content {
+      margin: 30px 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 3rem;
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      width: 25%;
+      align-self: flex-end;
+
+      p {
+        line-height: var(--font-h5);
+        &:first-child {
+          align-self: flex-start;
+        }
+
+        &:last-child {
+          align-self: flex-end;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  span {
+    font-weight: bold;
+  }
+}

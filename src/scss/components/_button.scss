@@ -12,17 +12,54 @@
   cursor: pointer;
 }
 
-button.btn-incrementa {
-  display: flex;
-  width: 100px;
-  height: 100px;
+.btn-primary-red-modal {
+  @include btn-create-career();
+  background-color: var(--error);
+  transition: background-color 0.3s ease;
 
+  &:hover {
+    background-color: var(--error-light);
+  }
+
+  &:active {
+    background-color: var(--error-dark);
+    transform: scale(0.98);
+  }
+}
+
+.btn-primary-white-modal {
+  @include btn-create-career();
+  background-color: var(--primary);
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--primary-light);
+  }
+
+  &:active {
+    background-color: var(--primary-dark);
+    transform: scale(0.98);
+  }
+}
+
+button.btn-incrementa,
+button.btn-editar,
+button.btn-voltar,
+button.btn-remover {
+  display: flex;
+  transition: background-color 0.3s ease;
   border-radius: 100%;
   border: none;
-  background-color: var(--secundary);
-
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+button.btn-incrementa {
+  background-color: var(--accent-green);
+  width: 100px;
+  height: 100px;
 
   img {
     width: 50px;
@@ -30,10 +67,124 @@ button.btn-incrementa {
   }
 
   &:hover {
-    background-color: var(--secundary-hover);
+    background-color: var(--success-light);
   }
 
   &:active {
-    background-color: var(--secundary-active);
+    background-color: var(--success-dark);
+    transform: scale(0.98);
+  }
+
+  &__error {
+    background-color: var(--error);
+    animation: pulseDiaIncrementado 0.8s ease-out;
+
+    &:hover {
+      background-color: var(--error-light);
+    }
+
+    &:active {
+      background-color: var(--error-dark);
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}
+
+button.btn-editar {
+  width: 50px;
+  height: 50px;
+  background-color: var(--success);
+
+  img {
+    width: 35px;
+    height: 35px;
+  }
+
+  &:hover {
+    background-color: var(--success-light);
+    .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    background-color: var(--success-dark);
+    transform: scale(0.98);
+  }
+
+  &__error {
+    background-color: var(--error);
+    animation: pulseDiaIncrementado 0.8s ease-out;
+
+    &:hover {
+      background-color: var(--error-light);
+    }
+
+    &:active {
+      background-color: var(--error-dark);
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}
+
+button.btn-remover {
+  width: 50px;
+  height: 50px;
+  background-color: var(--error);
+
+  &:hover {
+    background-color: var(--error-light);
+    .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    background-color: var(--error-dark);
+    transform: scale(0.98);
+  }
+}
+
+button.btn-voltar {
+  width: 50px;
+  height: 50px;
+  background-color: var(--secundary-light);
+
+  &:hover {
+    background-color: var(--secundary);
+    .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    background-color: var(--secundary-dark);
+    transform: scale(0.98);
+  }
+}
+
+@keyframes pulseDiaIncrementado {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 255, 0, 0.5);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 255, 0, 0);
   }
 }

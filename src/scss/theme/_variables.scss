@@ -1,5 +1,6 @@
 :root {
   --primary: #222831;
+  --primary-01: #262b35;
   --primary-dark: #1A1E24;
   --primary-light: #393E46;
 
@@ -21,17 +22,19 @@
   --accent-gold: #C9B458;
   --accent-red: #C97B63;
 
-  --success: #6D9773;        // Verde oliva suave, combina com o --sage
+  --success: #6D9773;
   --success-light: #A7C8AA;
   --success-dark: #516E56;
 
-  --warning: #C7A946;        // Amarelo queimado, combina com o --secundary
+  --warning: #C7A946;
   --warning-light: #E9DCA4;
   --warning-dark: #8B721D;
 
   --error: #A15C58;
   --error-light: #D48F8C;
   --error-dark: #743F3C;
+
+  --white: #f7f2ef;
 
   --font-h1: 3rem;
   --font-h2: 2.25rem;

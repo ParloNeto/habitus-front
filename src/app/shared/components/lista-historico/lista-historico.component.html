@@ -1,0 +1,31 @@
+<div class="lista-historico">
+  <h2 class="title-content">Histórico</h2>
+
+@if (this.listaHistorico()?.length) {
+
+    <table class="lista-historico__table">
+  <thead>
+    <tr>
+      <th>Dia</th>
+      <th>Data</th>
+      <th>Horário</th>
+      <th>Contador</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (historico of this.listaHistorico(); track $index) {
+      <tr>
+        <td>{{ historico.data | date: 'EEEE' | titlecase }}</td>
+        <td>{{ historico.data | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ historico.data | date: 'shortTime' }}</td>
+        <td>{{ historico.dia }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+  } @else {
+<h4 style="margin-top: 15px;">Você ainda não possui histórico para esse hábito. Bora começar hoje?</h4>
+  }
+
+
+</div>

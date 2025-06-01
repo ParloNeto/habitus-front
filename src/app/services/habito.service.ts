@@ -30,4 +30,8 @@ export class HabitoService {
     return this.#http.post<Habito>(this.url, habito);
   }
 
+  public deleteHabito(id: string): Observable<void> {
+    return this.#http.delete<void>(`${this.url}/${id}`);
+  }
+
 }

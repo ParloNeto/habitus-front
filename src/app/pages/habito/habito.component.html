@@ -1,0 +1,48 @@
+<div class="container">
+  <app-menu-lateral-habito [id]="this.id()!"/>
+  <div class="container__habito">
+    @if (this.habito(); as habito) {
+    <div class="container__habito__header">
+      <h1>{{ habito.dias }} {{ habito.dias === 1 ? "Dia" : "Dias" }}</h1>
+      <h2 class="title-content">{{ habito.nome }}</h2>
+    </div>
+
+    <div class="container__habito__content">
+      <app-incrementar-dia
+        [id]="this.id()"
+        [disponivelParaIncrementar]="diaAtualNaoExisteNoHistorico()"
+        (historicoAtualizadoHoje)="historicoAtualizadoHoje = $event"
+      />
+
+      @if (this.habito()?.historico) {
+        @if (!diaAtualNaoExisteNoHistorico() || historicoAtualizadoHoje) {
+      <h3 class="hours-remaining">Disponível para atualizar em:</h3>
+      <h2 class="hours-remaining">{{ diferencaHoras }}</h2>
+
+      <h3>
+        Você está há
+        <span [ngClass]="getDiasClass(habito)"
+          >{{ habito.dias }} {{ habito.dias === 1 ? "dia" : "dias" }}
+        </span>
+        sem fumar!
+      </h3>
+      <h2 class="mensagem-motivacao">{{ mensagemMotivacao() }}</h2>
+      } @else {
+
+       }
+      }
+    </div>
+
+    @if (this.habito()?.objetivo?.data) {
+    <div class="container__habito__footer">
+      <p>Data estipulada para prazo:</p>
+      <p>{{ this.habito()?.objetivo?.data }}</p>
+    </div>
+
+    }
+  }
+  </div>
+  @if (this.habito()?.historico) {
+    <app-lista-historico [listaHistorico]="this.habito()?.historico"/>
+  }
+</div>

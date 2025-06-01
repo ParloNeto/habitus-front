@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="container__content">
+    <h2 class="title-content">Cadastrar Hábito</h2>
+
+    <form [formGroup]="habitoForm" (ngSubmit)="onSubmit()" class="form">
+      <label for="nome">Nome do Hábito</label>
+      <input id="nome" formControlName="nome" type="text" placeholder="Ex: Meditar" />
+
+      <div formGroupName="objetivo" class="form__objetivo">
+        <label for="objetivo">Objetivo</label>
+        <input id="objetivo" formControlName="nome" type="text" placeholder="Ex: Reduzir estresse" />
+
+        <label for="data">Data Estipulada</label>
+        <input id="data" formControlName="data" type="date" />
+      </div>
+
+      <button type="submit">Cadastrar</button>
+    </form>
+  </div>
+</div>

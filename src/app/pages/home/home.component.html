@@ -1,11 +1,11 @@
 <div class="container">
   <div class="container__content">
     <h2 class="title-content">Seus Hábitos</h2>
-    @if (this.habitos(); as habitos) {
-      @for (habito of habitos; track $index) {
+    @if (this.habitos(); as habitos) { @for (habito of habitos; track $index) {
     <div
       class="container__content__habito-descricao"
       [routerLink]="['/habito', habito.id]"
+      [ngClass]="{ 'incrementado-hoje': isHabitoAtivoHoje(habito) }"
     >
       <h3 class="habito">{{ habito.nome }}</h3>
       <h4>
@@ -14,6 +14,9 @@
           {{ habito.dias }} {{ habito.dias === 1 ? "dia" : "dias" }}
         </span>
       </h4>
+      @if (this.isHabitoAtivoHoje(habito)) {
+      <p class="p-incrementado-descricao">Já incrementado hoje!</p>
+      }
     </div>
     } }
   </div>

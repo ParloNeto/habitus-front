@@ -16,27 +16,22 @@
 }
 
 .modal-content {
-  background-color: var(--white-modal);
+  background-color: var(--secundary);
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 60vw;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 40vw;
   text-align: center;
 
   &__error {
+    background-color: var(--error-dark);
   }
-}
-
-.modal-list-checkbox-player {
-  background-color: var(--primary);
-  width: 650px;
-  border-radius: 15px;
-}
-
-.modal-options-checkbox-player {
-  background-color: var(--red);
-  width: 650px;
-  height: 80px;
+  &__success {
+    background-color: var(--success-dark);
+  }
+  &__confirmation {
+    color: var(--warning-dark);
+  }
 }
 
 .modal-header {
@@ -54,20 +49,20 @@
 
 .modal-title {
   flex-grow: 1;
-  text-align: center; /* Centraliza o título */
-  font-size: 34px;
-  font-weight: 400;
+  text-align: center;
+  font-size: var(--font-h2);
+  font-weight: 500;
 
   &__error {
-    color: var(--red);
+    color: var(--error-light);
   }
 
   &__confirmation {
-    color: var(--primary);
+    color: var(--warning-light);
   }
 
   &__success {
-    color: var(--green);
+    color: var(--success-light);
   }
 }
 
@@ -82,23 +77,29 @@
   cursor: pointer;
 }
 
-.btn-modal{
+.btn-modal {
+  &__error,
+  &__warning,
+  &__success {
+    color: var(--primary);
+  }
+
   &__error {
-    background-color: var(--red);
+    background-color: var(--error);
   }
 
   &__warning {
-    background-color: var(--white);
+    background-color: var(--warning);
   }
 
   &__success {
-    background-color: var(--green);
+    background-color: var(--success);
   }
 }
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: var(--primary);
   text-decoration: none;
 }
 
@@ -111,6 +112,8 @@
   font-weight: 500;
 
   &__message {
+    color: var(--secundary-light);
+    font-weight: 500;
   }
 }
 
@@ -125,8 +128,8 @@
 
   border-radius: 5px;
 
-  color: var(--white);
-
+  color: var(--secundary-light);
+  border: none;
   font-size: 18px;
   font-weight: 400;
   line-height: 21.09px;

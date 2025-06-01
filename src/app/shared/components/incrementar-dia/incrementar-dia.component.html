@@ -1,3 +1,3 @@
-<button (click)="incrementarDia()" class="btn-incrementa">
-  <img [src]="disponivelParaIncrementar() ? 'add.svg' : 'block'"  alt="Botao incrementa dia" />
+<button [ngClass]="btnClass()" (click)="incrementarDia()" [disabled]="!disponivelParaIncrementar" class="btn-incrementa">
+  <img [src]="disponivelParaIncrementar && !foiIncrementadoHoje ? 'add.svg' : 'block.svg'"  alt="Botao incrementa dia" />
 </button>
