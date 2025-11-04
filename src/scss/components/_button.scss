@@ -174,6 +174,22 @@ button.btn-voltar {
   }
 }
 
+@media screen and (max-width: 1168px) {
+
+  button.btn-editar,
+  button.btn-voltar,
+  button.btn-remover {
+    width: 50px;
+    height: 50px;
+
+
+    img {
+      width: 35px;
+      height: 35px;
+    }
+  }
+}
+
 @keyframes pulseDiaIncrementado {
   0% {
     transform: scale(1);

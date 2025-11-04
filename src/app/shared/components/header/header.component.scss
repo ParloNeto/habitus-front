@@ -10,6 +10,21 @@
     position: relative;
   }
 
+  @media screen and (max-width: 1168px) {
+    header {
+      flex-direction: column;
+    }
+
+    .dropdown {
+      overflow: hidden;
+    }
+
+    .dropbtn {
+      display: none;
+
+    }
+  }
+
   img {
     cursor: pointer;
   }

@@ -14,6 +14,14 @@
         (historicoAtualizadoHoje)="historicoAtualizadoHoje = $event"
       />
 
+      @if (diferencaDias && diaAtualNaoExisteNoHistorico()) {
+      <p class="warning" [ngClass]="getDiferencaDiasClass(diferencaDias)">Você está há
+        <strong [ngClass]="getDiferencaDiasClass(diferencaDias)">{{  diferencaDias  }}</strong>
+        {{ diferencaDias === 1 ? "dia" : "dias" }} sem marcar esse hábito!
+      </p>
+      }
+
+
       @if (this.habito()?.historico) {
         @if (!diaAtualNaoExisteNoHistorico() || historicoAtualizadoHoje) {
       <h3 class="hours-remaining">Disponível para atualizar em:</h3>

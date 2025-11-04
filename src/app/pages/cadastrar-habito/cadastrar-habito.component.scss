@@ -47,7 +47,7 @@
         border-radius: 8px;
         font-size: var(--font-p);
         background-color: var(--primary);
-        color: white;
+        color: var(--secundary);
         transition: border-color 0.3s;
 
         &::placeholder {
@@ -88,4 +88,14 @@
       }
     }
   }
+}
+
+select {
+  height: 50px;
+  padding: 15px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: var(--font-p);
+  background-color: var(--primary);
+  color: var(--secundary);
 }

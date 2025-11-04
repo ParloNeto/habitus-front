@@ -14,6 +14,40 @@
     font-weight: bold;
   }
 
+  p.warning {
+    color: var(--error-light);
+    font-weight: bold;
+
+    &.dias-neutro {
+      color: var(--white);
+    }
+
+    &.dias-warning {
+      color: var(--error-light);
+    }
+
+    &.dias-limite {
+      color: var(--error);
+    }
+  }
+
+  strong {
+    font-size: var(--font-h4);
+    font-weight: bolder;
+    margin: 0px 2.5px;
+
+    &.dias-neutro {
+      color: var(--error-light);
+    }
+
+    &.dias-warning {
+      color: var(--error);
+    }
+
+    &.dias-limite {
+      color: var(--error-dark);
+    }
+  }
   .container {
     display: flex;
     justify-content: center;
@@ -64,5 +98,29 @@
 
   span {
     font-weight: bold;
+  }
+
+  @media screen and (max-width: 1168px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: var(--font-h2);
+    }
+
+    h2.mensagem-motivacao {
+      text-align: center;
+    }
+
+    .container__habito {
+      &__content {
+        margin: 15px 0px;
+        line-height: normal;
+      }
+    }
   }
 }

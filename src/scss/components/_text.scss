@@ -9,6 +9,7 @@ th,
 td,
 span,
 label,
+select,
 input {
   font-family: Roboto;
 }
@@ -75,4 +76,30 @@ p.p-incrementado-descricao {
   position: absolute;
   right: 15px;
   bottom: 5px;
+}
+
+
+
+@media screen and (max-width: 1168px) {
+  h3.habito {
+    font-size: var(--font-h5);
+  }
+  h4 {
+    font-size: var(--font-h6);
+  }
+
+  span {
+    font-size: var(--font-p);
+  }
+
+  h2.title-content,
+  h2.hours-remaining,
+  span {
+    font-size: var(--font-h3);
+  }
+
+  h2.mensagem-motivacao {
+    font-size: var(--font-h3);
+    line-height: normal;
+  }
 }

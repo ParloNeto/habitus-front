@@ -23,13 +23,12 @@ import { MenuLateralHabitoComponent } from '../../shared/components/menu-lateral
     CommonModule,
     IncrementarDiaComponent,
     ListaHistoricoComponent,
-    MenuLateralHabitoComponent
+    MenuLateralHabitoComponent,
   ],
   templateUrl: './habito.component.html',
   styleUrl: './habito.component.scss',
 })
 export class HabitoComponent implements OnInit, OnDestroy {
-
   public habito = signal<Habito | null>(null);
   public id = signal<string | undefined>(undefined);
   public mensagemMotivacao = signal<string>(
@@ -54,8 +53,6 @@ export class HabitoComponent implements OnInit, OnDestroy {
     return this._historicoAtualizadoHoje();
   }
 
-
-
   get diaHistoricoMaisRecente(): number | null {
     const historico = this.historicoMaisRecente();
     if (!historico || !historico.data) return null;
@@ -64,6 +61,19 @@ export class HabitoComponent implements OnInit, OnDestroy {
         ? new Date(historico.data)
         : historico.data;
     return data.getDate();
+  }
+
+  get diferencaDias(): number | null {
+    const historico = this.historicoMaisRecente();
+
+    if (!historico) return null;
+
+    const ultimaData = historico?.data;
+    const dataAtual = new Date();
+
+    const diferencaMs = Math.abs(ultimaData.getTime() - dataAtual.getTime());
+    const diferencaDias = Math.ceil(diferencaMs / (1000 * 60 * 60 * 24));
+    return diferencaDias - 1;
   }
 
   get diferencaHoras(): string {
@@ -96,10 +106,13 @@ export class HabitoComponent implements OnInit, OnDestroy {
 
   public diaAtualNaoExisteNoHistorico(): boolean {
     const historico = this.historicoMaisRecente();
-    if (!historico || !historico.data) return true;
+
+    if (!historico || !historico.data)
+      return true;
 
     const dataHistorico = new Date(historico.data);
     const dataAtual = new Date();
+
     return dataAtual.getDate() !== dataHistorico.getDate();
   }
 
@@ -144,6 +157,16 @@ export class HabitoComponent implements OnInit, OnDestroy {
       return 'dias-warning';
     } else {
       return 'dias-success';
+    }
+  }
+
+  public getDiferencaDiasClass(dias: number): string {
+    if (dias < 10) {
+      return 'dias-neutro';
+    } else if (dias < 20) {
+      return 'dias-warning';
+    } else {
+      return 'dias-limite';
     }
   }
 

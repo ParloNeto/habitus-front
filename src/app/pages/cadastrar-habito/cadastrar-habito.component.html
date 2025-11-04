@@ -10,6 +10,27 @@
         <label for="objetivo">Objetivo</label>
         <input id="objetivo" formControlName="nome" type="text" placeholder="Ex: Reduzir estresse" />
 
+        @if (tiposObjetivo(); as tipos) {
+        <label for="tipo">Tipo de Objetivo</label>
+        <select id="tipo" [value]="selectedTipo" (change)="onTipoChange($event)">
+          <option value="" disabled selected>Selecione o tipo</option>
+          @for (tipo of tipos; track $index) {
+            <option [value]="tipo.nome">{{ tipo.nome }}</option>
+          }
+        </select>
+        }
+
+
+        @if (tiposObjetivo()) {
+        <label for="subtipo">Subtipo</label>
+        <select id="subtipo" formControlName="subtipo">
+          <option value="" disabled selected>Selecione o subtipo</option>
+          <option *ngFor="let subtipo of subtipos()" [value]="subtipo">{{ subtipo }}</option>
+        </select>
+        }
+
+
+
         <label for="data">Data Estipulada</label>
         <input id="data" formControlName="data" type="date" />
       </div>

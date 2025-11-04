@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="mobile-button">
+    <button class="btn-incrementa">
+      <img src="add.svg" alt="Cadastrar Habito" />
+    </button>
+  </div>
   <div class="container__content">
     <h2 class="title-content">Seus Hábitos</h2>
     @if (this.habitos(); as habitos) { @for (habito of habitos; track $index) {
@@ -7,16 +12,19 @@
       [routerLink]="['/habito', habito.id]"
       [ngClass]="{ 'incrementado-hoje': isHabitoAtivoHoje(habito) }"
     >
-      <h3 class="habito">{{ habito.nome }}</h3>
-      <h4>
-        Contador:
-        <span [ngClass]="getDiasClass(habito)">
-          {{ habito.dias }} {{ habito.dias === 1 ? "dia" : "dias" }}
-        </span>
-      </h4>
-      @if (this.isHabitoAtivoHoje(habito)) {
-      <p class="p-incrementado-descricao">Já incrementado hoje!</p>
-      }
+    <h3 class="habito">{{ habito.nome }}</h3>
+      <div class="contador-dias">
+
+        <h4>
+          Contador:
+          <span [ngClass]="getDiasClass(habito)">
+            {{ habito.dias }} {{ habito.dias === 1 ? "dia" : "dias" }}
+          </span>
+        </h4>
+        @if (this.isHabitoAtivoHoje(habito)) {
+        <p class="p-incrementado-descricao">Já incrementado hoje!</p>
+        }
+      </div>
     </div>
     } }
   </div>

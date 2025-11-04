@@ -1,49 +1,54 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HabitoService } from '../../services/habito.service';
-import { Router } from '@angular/router';
-import { SnackbarService } from '../../services/snackbar.service';
-import { ModalService } from '../../services/modal.service';
+import { Component, OnInit, Signal, inject, signal } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TipoObjetivoService } from '../../services/tipo-objetivo.service';
+import { TipoObjetivo } from '../../models/tipo-objetivo.interface';
 
 @Component({
   selector: 'app-cadastrar-habito',
-  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './cadastrar-habito.component.html',
-  styleUrl: './cadastrar-habito.component.scss'
+  styleUrls: ['./cadastrar-habito.component.scss'],
+  imports: [ReactiveFormsModule, CommonModule]
 })
 export class CadastrarHabitoComponent implements OnInit {
   habitoForm!: FormGroup;
 
+  tiposObjetivo = signal<Array<TipoObjetivo>>([]);
+  subtipos = signal<Array<string>>([]);
+
+  // subtiposDisponiveis: string[] = [];
+  selectedTipo = '';
+
+  private tipoObjetoService = inject(TipoObjetivoService);
   private fb = inject(FormBuilder);
-  private route = inject(Router);
-  private habitoService = inject(HabitoService);
-  private snackbar = inject(SnackbarService);
-  private modalService = inject(ModalService);
 
   ngOnInit(): void {
     this.habitoForm = this.fb.group({
-      nome: ['', Validators.required],
+      nome: [''],
       objetivo: this.fb.group({
-        nome: ['', Validators.required],
-        data: [new Date(), Validators.required]
+        nome: [''],
+        subtipo: [''],
+        data: ['']
       })
     });
+
+    this.tipoObjetoService.getAllTiposObjetivo().subscribe({
+      next: (res: TipoObjetivo[]) => this.tiposObjetivo.set(res)
+    })
   }
 
+  onTipoChange(event: Event): void {
+  const selectedValue = (event.target as HTMLSelectElement).value;
+  const objetivoSelecionado = this.tiposObjetivo().find((tipoObjetivo) => tipoObjetivo.nome === selectedValue)
+
+  if (objetivoSelecionado)
+    this.subtipos.update(() => objetivoSelecionado.subtipos)
+
+  this.selectedTipo = selectedValue;
+}
+
+
   onSubmit(): void {
-    if (this.habitoForm.valid) {
-      this.habitoService.createHabito(this.habitoForm.value)
-        .subscribe({
-          next: () => {
-            this.route.navigateByUrl("/home").then(() => {
-            this.snackbar.showSuccess("Hábito cadastrado com sucesso!", 5000)
-            });
-          },
-          error: error => this.modalService.showError(error)
-        })
-    } else {
-      this.habitoForm.markAllAsTouched();
-    }
+    console.log(this.habitoForm.value);
   }
 }
